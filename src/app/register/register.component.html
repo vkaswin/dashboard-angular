@@ -1,0 +1,86 @@
+<div>
+    <h2>Welcome to the Registeration Page!</h2>
+    <label>Enter your First Name : </label>
+    <input type="text" name="firstName" (focus)="onFocus($event)" (blur)="onBlur($event)" placeholder="First Name" [(ngModel)]="registerData.firstName">
+    <span *ngIf="errorHandle.firstName">Please Enter your Name</span>
+    <br>
+    <label>Enter your Last Name : </label>
+    <input type="text" name="lastName" (focus)="onFocus($event)" (blur)="onBlur($event)" placeholder="Last Name" [(ngModel)]="registerData.lastName">
+    <span *ngIf="errorHandle.lastName">Please Enter your Name</span>
+    <br>
+    <label>Enter your Email : </label>
+    <input type="text" name="email" (focus)="onFocus($event)" (blur)="onBlur($event)" placeholder="Email" [(ngModel)]="registerData.email">
+    <span *ngIf="errorHandle.email">Please Enter your Email</span>
+    <br>
+    <label>Enter your Password : </label>
+    <input type="password" name="password" (focus)="onFocus($event)" (blur)="onBlur($event)" placeholder="Password" [(ngModel)]="registerData.password">
+    <span *ngIf="errorHandle.password">Please Enter your Password</span>
+    <br>
+    <label>Enter your Date of Birth : </label>
+    <input type="date" name="dob" (focus)="onFocus($event)" (blur)="onBlur($event)" [(ngModel)]="registerData.dob">
+    <span *ngIf="errorHandle.dob">Please Enter your Date of Birth</span>
+    <br>
+    <label>Enter your Address : </label>
+    <textarea name="address" (focus)="onFocus($event)" (blur)="onBlur($event)" placeholder="Address" [(ngModel)]="registerData.address"></textarea>
+    <span *ngIf="errorHandle.address">Please Enter your Address</span>
+    <br>
+    <label>Select the Gender : </label>
+    <input type="radio" value="Male" name="gender" [(ngModel)]="registerData.gender">Male
+    <input type="radio" value="Female" name="gender" [(ngModel)]="registerData.gender">Female
+    <input type="radio" value="Other" name="gender" [(ngModel)]="registerData.gender">Other
+    <span *ngIf="errorHandle.gender">Please Select your Gender</span>
+    <br>
+    <label>Select your Hobbies : </label>
+    <input type="checkbox" value="Basketball" (change)="onChange($event)">Basketball
+    <input type="checkbox" value="Football" (change)="onChange($event)">Football
+    <input type="checkbox" value="Hockey" (change)="onChange($event)">Hockey
+    <input type="checkbox" value="Cricket" (change)="onChange($event)">Cricket
+    <input type="checkbox" value="Volleyball" (change)="onChange($event)">Volleyball
+    <span *ngIf="errorHandle.hobbies">Please Select Any One Hobbies</span>
+    <br>
+    <label>Select your State : </label>
+    <select [(ngModel)]="registerData.state">
+        <option value="" disabled>---State---</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Chennai">Madurai</option>
+        <option value="Chennai">Coimbatore</option>
+        <option value="Chennai">Trichy</option>
+        <option value="Chennai">Salem</option>
+        <option value="Chennai">Villupuram</option>
+    </select>
+    <span *ngIf="errorHandle.state">Please Select your State</span>
+    <br>
+    <button (click)="onSubmit()">Submit</button>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Hobbies</th>
+                <th>State</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let array of candidatesData; let index = index">
+                <td> {{array.firstName}} </td>
+                <td> {{array.lastName}} </td>
+                <td> {{array.email}} </td>
+                <td> {{array.password}} </td>
+                <td> {{array.dob}} </td>
+                <td> {{array.gender}} </td>
+                <td> {{array.address}} </td>
+                <td>
+                    <ol>
+                        <li *ngFor="let data of candidatesData[index].hobbies">{{data}}</li>
+                    </ol>
+                </td>
+                <td> {{array.state}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

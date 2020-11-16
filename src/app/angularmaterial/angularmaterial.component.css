@@ -1,0 +1,15 @@
+.btn{
+    background-color: olivedrab;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.btn-1{
+    background-color: mediumslateblue;
+    color: white;
+}
+.example-card {
+    max-width: 400px;
+}
+.progress{
+    width: 500px;
+}

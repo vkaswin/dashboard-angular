@@ -1,0 +1,52 @@
+<div>
+    <label>Enter your Name</label>
+    <input type="text" placeholder="Name" [(ngModel)]="data.name">
+    <br>
+    <label>Enter your Role</label>
+    <input type="text" placeholder="Role" [(ngModel)]="data.role">
+    <br>
+    <label>Enter your Company Name</label>
+    <input type="text" placeholder="Company Name" [(ngModel)]="data.company_name">
+    <br>
+    <label>Enter your Company Location</label>
+    <input type="text" placeholder="Location" [(ngModel)]="data.location">
+    <br>
+    <button (click)="onSubmit()">Submit</button>
+</div>
+<div class="align">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Company Name</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let info of employeeData; let index = index" [class.back] = "changeClass[index]">
+            
+            <td *ngIf="displayText[index]">{{info.name}}</td>
+            <td *ngIf="!displayText[index]"><input type="text" [(ngModel)]="temp_data.name"></td>
+
+            <td *ngIf="displayText[index]">{{info.role}}</td> 
+            <td *ngIf="!displayText[index]"><input type="text" [(ngModel)]="temp_data.role"></td>
+
+            <td *ngIf="displayText[index]">{{info.company_name}}</td>
+            <td *ngIf="!displayText[index]"><input type="text" [(ngModel)]="temp_data.company_name"></td>
+
+            <td *ngIf="displayText[index]">{{info.location}}</td>
+            <td *ngIf="!displayText[index]"><input type="text" [(ngModel)]="temp_data.location"></td>
+
+            <td><button (click)="onDelete(index)">Delete</button>
+                <button (click)="onEdit(index)" *ngIf="displayButton[index]">Edit</button>
+                <button (click)="onSave(index)" *ngIf="!displayButton[index]">Save</button>
+                <button (click)="onCancel(index)" *ngIf="!displayButton[index]">Cancel</button>
+            </td>
+
+        </tr>
+        <tr *ngIf="employeeData.length == 0">
+            <td colspan="5">No Records Found</td>
+        </tr>
+    </tbody>
+</div>

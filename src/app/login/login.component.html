@@ -1,0 +1,30 @@
+<div>
+    <label>Enter Username</label>
+    <input class="red" placeholder="Username" [(ngModel)] = "login.username">
+    <br>
+    <label>Enter Password</label>
+    <input class="blue" type="password" placeholder="Password" [(ngModel)] = "login.password">
+    <br>
+    <button (click)="onLogin()">Login</button>
+    <br>
+    <button (click)="loadApi()">Load API</button>
+    <br>
+    <button [routerLink]="['/home']">Login HTML</button>
+    <div *ngIf="login.username!='' || login.password!=''">
+        <span>Username is {{ login.username }}</span>
+        <br>
+        <span>Username is {{ login.password }}</span>
+    </div>
+    <div>
+        <div class="card" *ngFor="let product of this.products">
+            <img src={{product.image}}>
+            <div class="align">
+            <span>{{product.name}}</span>
+            <br>
+            <span>Price : {{product.price}}</span>
+            <br>
+            <span>Category : {{product.category}}</span>
+            </div>
+        </div>
+    </div>
+</div>
